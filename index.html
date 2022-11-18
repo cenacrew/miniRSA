@@ -8,20 +8,30 @@
     </head>
 
   <body>
-    <button id = "key_gen_btn" class = "btn btn-primary" type = "submit" pys-onClick="key">Générer les clés</button> 
-    <div id="output_alice"></div>
-    <div id="output_bob"></div>
-    <div id="output_ca"></div>
+    <button id = "key_gen_btn" class = "btn btn-primary" type = "submit" pys-onClick="key">Générer les clés</button>
+    <div class="key">
+      <p class="k1">La clé publique d'Alice est :</p> 
+      <div class="k2" id="output_alice_pub"></div>
+      <p class="k3">La clé privé d'Alice est :</p>
+      <div class="k4" id="output_alice_prv"></div> 
+      <p class="k5">La clé publique de Bob est :</p> 
+      <div class="k6" id="output_bob_pub"></div>
+      <p class="k7">La clé privé de Bob est :</p>
+      <div class="k8" id="output_bob_prv"></div>
+      <p class="k9">La clé publique de CA est :</p> 
+      <div class="k10" id="output_ca_pub"></div>
+      <p class="k11">La clé privé de CA est :</p>
+      <div class="k12" id="output_ca_prv"></div>
+    </div>
+    <div class="message">
+      <textarea id="crypt_area" class="m1" name="crypt_area" rows="5" cols="33" placeholder="Entrez ici le message que vous voulez crypter."></textarea>
+      <button id = "crypt_btn" class = "btn btn-primary m2" type = "submit" pys-onClick="crypt">Crypter le texte</button>
+      <div id="output_crypt" class="m3"></div>
 
-    <textarea id="crypt_area" name="crypt_area" rows="5" cols="33" placeholder="Entrez ici le message que vous voulez crypter."></textarea>
-    <br>
-    <button id = "crypt_btn" class = "btn btn-primary" type = "submit" pys-onClick="crypt">Crypter le texte</button>
-    <div id="output_crypt"></div>
-
-    <textarea id="decrypt_area" name="decrypt_area" rows="5" cols="33" placeholder="Entrez ici le message que vous voulez décrypter."></textarea>
-    <br>
-    <button id = "decrypt_btn" class = "btn btn-primary" type = "submit" pys-onClick="decrypt">Décrypter le texte</button>
-    <div id="output_decrypt"></div>
+      <textarea id="decrypt_area" class="m4" name="decrypt_area" rows="5" cols="33" placeholder="Entrez ici le message que vous voulez décrypter."></textarea>
+      <button id = "decrypt_btn" class = "btn btn-primary m5" type = "submit" pys-onClick="decrypt">Décrypter le texte</button>
+      <div id="output_decrypt" class="m6"></div>
+    </div>
 
 
     <py-script src="app.py"></py-script>
