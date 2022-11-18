@@ -1,6 +1,7 @@
 import hashlib
 import random
 import math
+from cgitb import text
 
 
 
@@ -31,16 +32,15 @@ def key(*args, **kwargs):
     output_ca_pub.write(cle_publique_ca)
     output_ca_prv.write(cle_privee_ca)
     
-    
-    
 
 def crypt(*args, **kwargs):
     crypt_area = Element('crypt_area')
     output_crypt = Element("output_crypt")
     if crypt_area.element.value == '':
         output_crypt.write("Entrez un message à crypter")
-    else : 
-        output_crypt.write(crypt_area.element.value)
+    else :
+        crypt_text = encrypt_cesar(crypt_area.element.value,"8")
+        output_crypt.write(crypt_text)
 
 
 def decrypt(*args, **kwargs):
@@ -49,9 +49,29 @@ def decrypt(*args, **kwargs):
     if decrypt_area.element.value == '':
         output_decrypt.write("Entrez un message à décrypter")
     else : 
-        output_decrypt.write(decrypt_area.element.value)
+        decrypt_text = decrypt_cesar(decrypt_area.element.value,"8")
+        output_decrypt.write(decrypt_text)
         
+def encrypt(char, key):
+    if char.isalpha():
+        if char.isupper():
+            return chr((ord(char) - 65 + key) % 26 + 65)
+        else:
+            return chr((ord(char) - 97 + key) % 26 + 97)
+    else:
+        return char
 
+
+def encrypt_cesar(text, key):
+    text = text.lower()
+    key = ord(key) - 96
+    return ''.join([encrypt(char, key) for char in text])
+
+def decrypt_cesar(text, key):
+    text = text.lower()
+    key = ord(key) - 96
+    return ''.join([encrypt(char, -key) for char in text])
+    
 
 def puissance(a, e, n):
     p=1
